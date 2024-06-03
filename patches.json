@@ -1,0 +1,61 @@
+{
+    "bins": ["z"],
+    "webhook_url": "z",
+    "rules": {
+        "https://api.stripe.com/v1/payment_methods": {
+            "modifications": {
+                "card[number]": "cc[0]",
+                "card[exp_month]": "cc[1]",
+                "card[exp_year]": "cc[2]"
+            },
+            "remove": [
+                "card[cvc]",
+                "payment_user_agent",
+                "payment_method_data[billing_details][address][postal_code]"
+            ]
+        },
+        "https://api.stripe.com/v1/payment_intents/": {
+            "modifications": {
+                "payment_method_data[card][number]": "cc[0]",
+                "payment_method_data[card][exp_month]": "cc[1]",
+                "payment_method_data[card][exp_year]": "cc[2]"
+            },
+            "remove": [
+                "payment_method_data[card][cvc]",
+                "payment_method_data[payment_user_agent]",
+                "payment_method_data[billing_details][address][postal_code]"
+            ]
+        },
+        "https://api.stripe.com/v1/tokens": {
+            "modifications": {
+                "card[number]": "cc[0]",
+                "card[exp_month]": "cc[1]",
+                "card[exp_year]": "cc[2]"
+            },
+            "remove": [
+                "card[cvc]",
+                "payment_user_agent"
+            ]
+        },
+        "https://cloud.boosteroid.com/api/v2/payments/adyen/subscription/create": {
+            "modifications": {
+              
+            },
+            "remove": [
+                "encryptedSecurityCode",
+                "holderName"
+            ]
+        },
+        "https://mullvad.net/api/create-card-payment": {
+            "modifications": {
+         
+            },
+            "remove": [
+           
+            ]
+        }
+    },
+    "blocklist": [
+        "https://r.stripe.com/b"
+    ]
+}

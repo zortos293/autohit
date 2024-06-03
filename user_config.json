@@ -1,0 +1,9 @@
+{
+    "user_configs": {
+        "127.0.0.1": {
+            "password": "zzzz",
+            "bin": "z",
+            "proxy": false
+        }
+    }
+}
